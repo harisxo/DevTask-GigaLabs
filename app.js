@@ -1,0 +1,10 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+const dotenv = require("dotenv");
+app.use(bodyParser.json());
+const connectDB = require("./config/db");
+dotenv.config({ path: "./config/config.env" });
+connectDB();
+require("./routes")(app);
+app.listen(5000);
